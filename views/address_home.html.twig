@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Address Book Test</title>
+</head>
+<body>
+    <h1>Contacts</h1>
+
+    {% if contacts is not empty %}
+        <p>Here are all your contacts:</p>
+
+        <ul>
+            {% for contact in contacts %}
+              <li>{{contact.getName}}<br/>{{contact.getPhone}}<br/>{{contact.getAddress}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action='/create_contact' method='post'>
+        <label for='name'>Person's name</label>
+        <input id='name' name='name' type='text'>
+        <br/>
+
+        <label for='phone'>Person's phone number</label>
+        <input id='phone' name='phone' type='number'>
+        <br/>
+
+        <label for='address'>Person's address</label>
+        <input id='address' name='address' type='text'>
+        <br/>
+
+        <button type='submit'>Add Contact Info.</button>
+    </form>
+
+    <form action='/delete_contacts' method='post'>
+        <button type='submit'>clear</button>
+    </form>
+
+</body>
+</html>
